@@ -7,12 +7,15 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
+import static io.javalin.apibuilder.ApiBuilder.path;
+import static io.javalin.apibuilder.ApiBuilder.get;
+
 public class BrowserMicroservice {
 
-    private final Javalin app;
     private static final Logger logger = LoggerFactory.getLogger(BrowserMicroservice.class);
+    private final Javalin app;
 
-    public BrowserMicroservice(){
+    public BrowserMicroservice() {
         this.app = Javalin.create();
 
         // Load configuration
@@ -33,29 +36,39 @@ public class BrowserMicroservice {
 
         // Configure events
         app.events(event -> {
-            event.serverStopping(() -> { System.out.println("Stopping.."); });
-            event.serverStopped(() -> { System.out.println("Stopped!"); });
+            event.serverStopping(() -> {
+                System.out.println("Stopping..");
+            });
+            event.serverStopped(() -> {
+                System.out.println("Stopped!");
+            });
         });
 
         // Register shutdown handler
         Runtime.getRuntime().addShutdownHook(new Thread(this::stop));
     }
 
-    public void start(String host, int port){
+    public static void main(String[] args) {
+        new BrowserMicroservice();
+    }
+
+    public void start(String host, int port) {
         logger.info("Starting application on {}:{} ...", host, port);
         app.start(host, port);
     }
 
-    public void stop(){
+    public void stop() {
         logger.info("Stopping application ...");
         app.stop();
     }
 
     private void configureRoutes(Javalin app) {
         app.get("/", ctx -> ctx.result("BrowserMicroservice"));
-    }
-
-    public static void main(String[] args) {
-        new BrowserMicroservice();
+        app.routes(() -> {
+            get("/hello", ctx -> ctx.result("Hello World"));
+            path("/api", () -> {
+                get("/test", ctx -> ctx.result("Hello API"));
+            });
+        });
     }
 }

@@ -10,8 +10,8 @@ import java.util.Properties;
 
 public class Config {
     private static final String CONFIG_FILE = "app.properties";
-    private final Properties properties;
     private static final Logger logger = LoggerFactory.getLogger(Config.class);
+    private final Properties properties;
 
     public Config() throws IOException {
         this.properties = new Properties();
@@ -20,10 +20,10 @@ public class Config {
         properties.setProperty("host", "127.0.0.1");
         properties.setProperty("port", "7000");
 
-        if(!Files.exists(Paths.get(CONFIG_FILE))){
+        if (!Files.exists(Paths.get(CONFIG_FILE))) {
             // Create config file if not exists
             store();
-        }else{
+        } else {
             // Load properties from config file
             load();
         }
@@ -40,11 +40,11 @@ public class Config {
         properties.store((new FileOutputStream(CONFIG_FILE)), "Browser Microservice Configuration");
     }
 
-    public int getIntProperty(String key){
+    public int getIntProperty(String key) {
         return Integer.parseInt(properties.getProperty(key));
     }
 
-    public String getStringProperty(String key){
+    public String getStringProperty(String key) {
         return properties.getProperty(key);
     }
 
