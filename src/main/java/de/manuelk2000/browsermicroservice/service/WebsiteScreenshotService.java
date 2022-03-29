@@ -5,7 +5,6 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,29 +14,20 @@ public class WebsiteScreenshotService {
 
     public WebsiteScreenshotService(){
         WebDriverManager.chromedriver().setup();
-        //WebDriver driver = new ChromeDriver();
-        //driver.get("http://www.bing.com/");
-        //File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        // Now you can do whatever you need to do with it, for example copy somewhere
-        /*try {
-            FileUtils.copyFile(scrFile, new File("screenshot.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        //driver.close();
     }
 
-    public void screenshot(String url, File file) {
+    public void takeScreenshot(String url, File file) throws IOException {
+        // Prepare browser
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors");
         WebDriver driver = new ChromeDriver(options);
-        driver.get("https://"+url);
+
+        // Fetch website and store screenshot to file
+        driver.get(url);
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(scrFile, file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FileUtils.copyFile(scrFile, file);
+
+        // Close browser
         driver.quit();
     }
 
