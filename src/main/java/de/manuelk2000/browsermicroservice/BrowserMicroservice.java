@@ -1,16 +1,15 @@
 package de.manuelk2000.browsermicroservice;
 
 import de.manuelk2000.browsermicroservice.config.Config;
+import de.manuelk2000.browsermicroservice.config.ConfigLoader;
 import de.manuelk2000.browsermicroservice.controller.ScreenshotController;
 import de.manuelk2000.browsermicroservice.service.WebsiteScreenshotService;
 import io.javalin.Javalin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-
-import static io.javalin.apibuilder.ApiBuilder.path;
 import static io.javalin.apibuilder.ApiBuilder.get;
+import static io.javalin.apibuilder.ApiBuilder.path;
 
 public class BrowserMicroservice {
 
@@ -23,15 +22,16 @@ public class BrowserMicroservice {
         // Load configuration
         Config config;
         try {
-            config = new Config();
-        } catch (IOException e) {
+            ConfigLoader configLoader = ConfigLoader.getInstance();
+            config = configLoader.getConfig();
+        } catch (IllegalStateException e) {
             logger.error("Failed to load configuration file!", e);
             e.printStackTrace();
             return;
         }
 
         // Start webserver
-        start(config.getStringProperty("host"), config.getIntProperty("port"));
+        start(config.getHost(), config.getPort());
 
         // Configure routes
         configureRoutes(app);
