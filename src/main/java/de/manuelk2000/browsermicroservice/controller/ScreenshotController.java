@@ -7,18 +7,18 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class ScreenshotController  {
+public class ScreenshotController {
 
-    private WebsiteScreenshotService websiteScreenshotService;
+    private final WebsiteScreenshotService websiteScreenshotService;
 
-    public ScreenshotController(WebsiteScreenshotService websiteScreenshotService){
+    public ScreenshotController(WebsiteScreenshotService websiteScreenshotService) {
         this.websiteScreenshotService = websiteScreenshotService;
     }
 
-    public void screenshot(Context context){
+    public void screenshot(Context context) {
         long start = System.currentTimeMillis();
         String url = context.pathParam("url");
-        File file = new File("screenshot_"+System.currentTimeMillis()+".png");
+        File file = new File("screenshot_" + System.currentTimeMillis() + ".png");
         try {
             this.websiteScreenshotService.takeScreenshot(url, file);
             context.result(new FileInputStream(file));
@@ -26,6 +26,6 @@ public class ScreenshotController  {
             e.printStackTrace();
         }
         long stop = System.currentTimeMillis();
-        System.out.println("Zeit "+(stop-start)+" ms for "+url);
+        System.out.println("Zeit " + (stop - start) + " ms for " + url);
     }
 }
