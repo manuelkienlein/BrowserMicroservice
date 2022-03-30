@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import static io.javalin.apibuilder.ApiBuilder.get;
 import static io.javalin.apibuilder.ApiBuilder.path;
@@ -86,7 +88,12 @@ public class BrowserMicroservice {
         app.get("/", ctx -> ctx.result("BrowserMicroservice"));
 
         app.routes(() -> {
-            get("/hello", ctx -> ctx.result("Hello World"));
+            get("/status", ctx -> {
+                Map<String, Object> status = new HashMap<>();
+                status.put("timestamp", System.currentTimeMillis());
+                status.put("config", config);
+                ctx.json(status);
+            });
             path("/v{version}", () -> {
                 get("/screenshot/{url}", screenshotController::screenshot);
             });
