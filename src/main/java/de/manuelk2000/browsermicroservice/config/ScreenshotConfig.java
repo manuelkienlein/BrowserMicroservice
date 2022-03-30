@@ -1,12 +1,12 @@
 package de.manuelk2000.browsermicroservice.config;
 
-import de.manuelk2000.browsermicroservice.service.screenshot.BrowserDrivers;
+import de.manuelk2000.browsermicroservice.service.browser.BrowserDriver;
 
 public class ScreenshotConfig {
 
     private int defaultWidth = 1920;
     private int defaultHeight = 1200;
-    private BrowserDrivers defaultBrowserEngine = BrowserDrivers.CHROME;
+    private BrowserDriver defaultBrowserEngine = BrowserDriver.CHROME;
 
     public int getDefaultWidth() {
         return defaultWidth;
@@ -24,11 +24,11 @@ public class ScreenshotConfig {
         this.defaultHeight = defaultHeight;
     }
 
-    public BrowserDrivers getDefaultBrowserEngine() {
+    public BrowserDriver getDefaultBrowserEngine() {
         return defaultBrowserEngine;
     }
 
-    public void setDefaultBrowserEngine(BrowserDrivers defaultBrowserEngine) {
+    public void setDefaultBrowserEngine(BrowserDriver defaultBrowserEngine) {
         this.defaultBrowserEngine = defaultBrowserEngine;
     }
 }

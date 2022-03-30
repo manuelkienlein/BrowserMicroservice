@@ -41,8 +41,13 @@ If you want to use environment variables, you can include them by adding ```${en
 
 - #### Take screenshot
   **GET** ```localhost:7000/v1/screenshot/{url-encoded website url}```
-
+  
   This request takes a simple screenshot of the given website and returns the image in the repsone.
+
+  | Get parameter | Description              | Value     |
+  |---------------|--------------------------|-----------|
+  | width         | Width of the screenshot  | 1 - 10000 |
+  | height        | Height of the screenshot | 1 - 10000 |
 
 ## Links
 - https://javalin.io/documentation
