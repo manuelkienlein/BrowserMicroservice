@@ -3,7 +3,7 @@ package de.manuelk2000.browsermicroservice;
 import de.manuelk2000.browsermicroservice.config.Config;
 import de.manuelk2000.browsermicroservice.config.ConfigLoader;
 import de.manuelk2000.browsermicroservice.controller.ScreenshotController;
-import de.manuelk2000.browsermicroservice.service.WebsiteScreenshotService;
+import de.manuelk2000.browsermicroservice.service.screenshot.WebsiteScreenshotService;
 import io.javalin.Javalin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,10 +67,10 @@ public class BrowserMicroservice {
     private void configureRoutes(Javalin app) {
 
         // Init services
-        WebsiteScreenshotService wss = new WebsiteScreenshotService();
+        WebsiteScreenshotService websiteScreenshotService = new WebsiteScreenshotService();
 
         // Init controllers
-        ScreenshotController screenshotController = new ScreenshotController(wss);
+        ScreenshotController screenshotController = new ScreenshotController(websiteScreenshotService);
 
         // Define routes
         app.get("/", ctx -> ctx.result("BrowserMicroservice"));

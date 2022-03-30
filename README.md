@@ -29,6 +29,10 @@ Below is the default config.yml file:
 ```yml
 host: "127.0.0.1"
 port: 7000
+screenshots:
+  defaultWidth: 1920
+  defaultHeight: 1200
+  defaultBrowserEngine: "CHROME"
 ```
 
 If you want to use environment variables, you can include them by adding ```${env:PORT}```. Here is a full documentation about [config variables](https://commons.apache.org/proper/commons-text/apidocs/org/apache/commons/text/StringSubstitutor.html) using interpolation.

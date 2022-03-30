@@ -4,6 +4,7 @@ public class Config {
 
     private String host = "127.0.0.1";
     private int port = 7000;
+    private ScreenshotConfig screenshots = new ScreenshotConfig();
 
     public String getHost() {
         return host;
@@ -19,6 +20,14 @@ public class Config {
 
     public void setPort(int port) {
         this.port = port;
+    }
+
+    public ScreenshotConfig getScreenshots() {
+        return screenshots;
+    }
+
+    public void setScreenshots(ScreenshotConfig screenshots) {
+        this.screenshots = screenshots;
     }
 
     @Override
