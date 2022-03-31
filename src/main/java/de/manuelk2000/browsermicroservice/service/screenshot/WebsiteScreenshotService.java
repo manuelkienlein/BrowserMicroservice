@@ -38,6 +38,7 @@ public class WebsiteScreenshotService {
         browser.url(url);
 
         // Take screenshot of website
+        logger.debug("Take screenshot of URL: " + url);
         File scrFile = ((TakesScreenshot) browser.getWebDriver()).getScreenshotAs(OutputType.FILE);
 
         // Store screenshot to file
@@ -55,6 +56,7 @@ public class WebsiteScreenshotService {
         browser.url(url);
 
         // Take screenshot of website
+        logger.debug("Take screenshot of URL: " + url);
         byte[] imageBytes = ((TakesScreenshot) browser.getWebDriver()).getScreenshotAs(OutputType.BYTES);
 
         // Close browser

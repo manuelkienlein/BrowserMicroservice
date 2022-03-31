@@ -20,8 +20,11 @@ import static io.javalin.apibuilder.ApiBuilder.path;
 public class BrowserMicroservice {
 
     private static final Logger logger = LoggerFactory.getLogger(BrowserMicroservice.class);
+
+    // Configuration and services accessible from all controllers
+    public static Config config;
+    public static WebsiteScreenshotService websiteScreenshotService;
     private final Javalin app;
-    private Config config;
 
     public BrowserMicroservice() {
         this.app = Javalin.create();
@@ -35,6 +38,9 @@ public class BrowserMicroservice {
             e.printStackTrace();
             return;
         }
+
+        // Init services
+        initServices();
 
         // Start webserver
         start(config.getHost(), config.getPort());
@@ -76,13 +82,13 @@ public class BrowserMicroservice {
         app.stop();
     }
 
+    private void initServices() {
+        logger.info("Initialize services ...");
+        websiteScreenshotService = new WebsiteScreenshotService();
+    }
+
     private void configureRoutes(Javalin app) {
-
-        // Init services
-        WebsiteScreenshotService websiteScreenshotService = new WebsiteScreenshotService();
-
-        // Init controllers
-        ScreenshotController screenshotController = new ScreenshotController(websiteScreenshotService, config);
+        logger.info("Register routes ...");
 
         // Define routes
         app.get("/", ctx -> ctx.result("BrowserMicroservice"));
@@ -95,13 +101,14 @@ public class BrowserMicroservice {
                 ctx.json(status);
             });
             path("/v{version}", () -> {
-                get("/screenshot/{url}", screenshotController::screenshot);
+                get("/screenshot/{url}", ScreenshotController::screenshot);
             });
         });
-
     }
 
     private void configureValidators() {
+        logger.info("Register request validators");
+
         JavalinValidation.register(URL.class, string -> {
             try {
                 return new URL(string);
@@ -112,6 +119,6 @@ public class BrowserMicroservice {
     }
 
     private void configureExceptions() {
-
+        logger.info("Register exception handlers ...");
     }
 }
