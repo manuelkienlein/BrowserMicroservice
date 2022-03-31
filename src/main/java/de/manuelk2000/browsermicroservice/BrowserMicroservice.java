@@ -3,6 +3,7 @@ package de.manuelk2000.browsermicroservice;
 import de.manuelk2000.browsermicroservice.config.Config;
 import de.manuelk2000.browsermicroservice.config.ConfigLoader;
 import de.manuelk2000.browsermicroservice.controller.ScreenshotController;
+import de.manuelk2000.browsermicroservice.controller.StatusController;
 import de.manuelk2000.browsermicroservice.service.screenshot.WebsiteScreenshotService;
 import io.javalin.Javalin;
 import io.javalin.core.validation.JavalinValidation;
@@ -94,12 +95,7 @@ public class BrowserMicroservice {
         app.get("/", ctx -> ctx.result("BrowserMicroservice"));
 
         app.routes(() -> {
-            get("/status", ctx -> {
-                Map<String, Object> status = new HashMap<>();
-                status.put("timestamp", System.currentTimeMillis());
-                status.put("config", config);
-                ctx.json(status);
-            });
+            get("/status", StatusController::status);
             path("/v{version}", () -> {
                 get("/screenshot/{url}", ScreenshotController::screenshot);
             });
