@@ -4,3 +4,4 @@ screenshots:
   defaultWidth: 1920
   defaultHeight: 1200
   defaultBrowserEngine: "CHROME"
+storage: null

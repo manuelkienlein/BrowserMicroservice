@@ -1,10 +1,15 @@
 package de.manuelk2000.browsermicroservice.config;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class Config {
 
     private String host = "127.0.0.1";
     private int port = 7000;
     private ScreenshotConfig screenshots = new ScreenshotConfig();
+    private StorageConfig storage;
 
     public String getHost() {
         return host;
@@ -30,12 +35,24 @@ public class Config {
         this.screenshots = screenshots;
     }
 
+    public StorageConfig getStorage() {
+        return storage;
+    }
+
+    public void setStorage(StorageConfig storage) {
+        this.storage = storage;
+    }
+
     @Override
     public String toString() {
-        return new StringBuilder()
-                .append(String.format("Host: %s\n", host))
-                .append(String.format("Port: %d\n", port))
-                .toString();
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper(jsonFactory);
+        try {
+            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

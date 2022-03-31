@@ -8,6 +8,16 @@ public class ScreenshotConfig {
     private int defaultHeight = 1200;
     private BrowserDriver defaultBrowserEngine = BrowserDriver.CHROME;
 
+    public ScreenshotConfig() {
+
+    }
+
+    public ScreenshotConfig(int defaultWidth, int defaultHeight, BrowserDriver defaultBrowserEngine) {
+        this.defaultWidth = defaultWidth;
+        this.defaultHeight = defaultHeight;
+        this.defaultBrowserEngine = defaultBrowserEngine;
+    }
+
     public int getDefaultWidth() {
         return defaultWidth;
     }
