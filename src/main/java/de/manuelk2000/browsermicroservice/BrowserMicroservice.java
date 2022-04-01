@@ -5,6 +5,7 @@ import de.manuelk2000.browsermicroservice.config.ConfigLoader;
 import de.manuelk2000.browsermicroservice.controller.ScreenshotController;
 import de.manuelk2000.browsermicroservice.controller.StatusController;
 import de.manuelk2000.browsermicroservice.service.screenshot.WebsiteScreenshotService;
+import de.manuelk2000.browsermicroservice.service.storage.StorageService;
 import io.javalin.Javalin;
 import io.javalin.core.validation.JavalinValidation;
 import org.slf4j.Logger;
@@ -12,8 +13,6 @@ import org.slf4j.LoggerFactory;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 import static io.javalin.apibuilder.ApiBuilder.get;
 import static io.javalin.apibuilder.ApiBuilder.path;
@@ -25,6 +24,7 @@ public class BrowserMicroservice {
     // Configuration and services accessible from all controllers
     public static Config config;
     public static WebsiteScreenshotService websiteScreenshotService;
+    public static StorageService storageService;
     private final Javalin app;
 
     public BrowserMicroservice() {
@@ -86,6 +86,7 @@ public class BrowserMicroservice {
     private void initServices() {
         logger.info("Initialize services ...");
         websiteScreenshotService = new WebsiteScreenshotService();
+        storageService = new StorageService(config.getStorage());
     }
 
     private void configureRoutes(Javalin app) {

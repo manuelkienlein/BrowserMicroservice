@@ -1,5 +1,6 @@
 package de.manuelk2000.browsermicroservice.service.screenshot;
 
+import de.manuelk2000.browsermicroservice.BrowserMicroservice;
 import de.manuelk2000.browsermicroservice.service.browser.Browser;
 import de.manuelk2000.browsermicroservice.service.browser.BrowserDriver;
 import org.apache.commons.io.FileUtils;
@@ -9,9 +10,11 @@ import org.openqa.selenium.TakesScreenshot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.UUID;
 
 public class WebsiteScreenshotService {
 
@@ -61,6 +64,11 @@ public class WebsiteScreenshotService {
 
         // Close browser
         browser.close();
+
+        if (BrowserMicroservice.config.getStorage() != null) {
+            String key = UUID.randomUUID() + ".png";
+            BrowserMicroservice.storageService.put(key, new ByteArrayInputStream(imageBytes));
+        }
 
         // Return screenshot image bytes
         return imageBytes;

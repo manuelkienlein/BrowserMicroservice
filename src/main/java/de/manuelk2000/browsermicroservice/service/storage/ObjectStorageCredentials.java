@@ -10,6 +10,10 @@ public class ObjectStorageCredentials {
     private int port;
     private boolean useSsl;
 
+    public ObjectStorageCredentials() {
+
+    }
+
     public ObjectStorageCredentials(String bucket, String region, String accessKey, String secretKey, String host, int port, boolean useSsl) {
         this.bucket = bucket;
         this.region = region;
