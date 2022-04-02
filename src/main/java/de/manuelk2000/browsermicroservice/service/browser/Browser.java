@@ -31,6 +31,7 @@ public class Browser {
         // Configure driver options
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless", "--disable-gpu", "--window-size=" + windowSize.getWidth() + "," + windowSize.getHeight(), "--ignore-certificate-errors", "--hide-scrollbars");
+        //options.addArguments("user-agent=YOUR_USER_AGENT");
 
         // Start driver
         webDriver = new ChromeDriver(options);
@@ -52,7 +53,7 @@ public class Browser {
     }
 
     public void url(URL url) {
-        logger.info("Browser opens URL :" + url.toString());
+        logger.info("Browser opens URL: " + url.toString());
         webDriver.get(url.toString());
     }
 
@@ -61,6 +62,7 @@ public class Browser {
     }
 
     public void setWindowSize(Dimension windowSize) {
+        logger.debug("Change window size to " + windowSize.toString());
         this.windowSize = windowSize;
         if (open)
             webDriver.manage().window().setSize(windowSize);

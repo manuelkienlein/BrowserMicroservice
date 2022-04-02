@@ -104,7 +104,7 @@ public class BrowserMicroservice {
     }
 
     private void configureValidators() {
-        logger.info("Register request validators");
+        logger.info("Register request validators ...");
 
         JavalinValidation.register(URL.class, string -> {
             try {
