@@ -4,6 +4,7 @@ import de.manuelk2000.browsermicroservice.config.Config;
 import de.manuelk2000.browsermicroservice.config.ConfigLoader;
 import de.manuelk2000.browsermicroservice.controller.ScreenshotController;
 import de.manuelk2000.browsermicroservice.controller.StatusController;
+import de.manuelk2000.browsermicroservice.service.format.FormatService;
 import de.manuelk2000.browsermicroservice.service.screenshot.WebsiteScreenshotService;
 import de.manuelk2000.browsermicroservice.service.storage.StorageService;
 import io.javalin.Javalin;
@@ -25,6 +26,7 @@ public class BrowserMicroservice {
     public static Config config;
     public static WebsiteScreenshotService websiteScreenshotService;
     public static StorageService storageService;
+    public static FormatService formatService;
     private final Javalin app;
 
     public BrowserMicroservice() {
@@ -87,6 +89,7 @@ public class BrowserMicroservice {
         logger.info("Initialize services ...");
         websiteScreenshotService = new WebsiteScreenshotService();
         storageService = new StorageService(config.getStorage());
+        formatService = new FormatService();
     }
 
     private void configureRoutes(Javalin app) {
