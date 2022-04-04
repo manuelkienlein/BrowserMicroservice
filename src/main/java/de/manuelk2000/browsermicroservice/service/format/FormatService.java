@@ -25,5 +25,4 @@ public class FormatService {
     public String toPrettyJson(Object object) throws JsonProcessingException {
         return jsonObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
     }
-
 }

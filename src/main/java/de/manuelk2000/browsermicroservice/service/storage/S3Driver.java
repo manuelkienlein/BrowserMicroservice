@@ -14,7 +14,8 @@ public abstract class S3Driver {
 
     public abstract void putObject(String bucket, String key, byte[] bytes, String contentType);
 
-    public abstract void putObject(String bucket, String key, InputStream inputStream, String contentType);
+    public abstract void putObject(String bucket, String key, InputStream inputStream,
+        String contentType);
 
     public abstract void putObject(String bucket, String key, File file);
 

@@ -7,7 +7,6 @@ public class StorageConfig {
     private ObjectStorageCredentials credentials;
 
     public StorageConfig() {
-
     }
 
     public StorageConfig(ObjectStorageCredentials credentials) {

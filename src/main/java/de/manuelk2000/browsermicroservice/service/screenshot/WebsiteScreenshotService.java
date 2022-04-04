@@ -60,7 +60,8 @@ public class WebsiteScreenshotService {
 
         // Take screenshot of website
         logger.info("Take screenshot of URL: " + url);
-        byte[] imageBytes = ((TakesScreenshot) browser.getWebDriver()).getScreenshotAs(OutputType.BYTES);
+        byte[] imageBytes = ((TakesScreenshot) browser.getWebDriver())
+            .getScreenshotAs(OutputType.BYTES);
 
         // Close browser
         browser.close();

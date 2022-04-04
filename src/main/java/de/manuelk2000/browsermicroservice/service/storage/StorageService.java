@@ -27,8 +27,11 @@ public class StorageService {
 
     public void put(String key, InputStream inputstream) {
         logger.info("Store object to " + key);
-        if (this.storageDriver == null) throw new UnsupportedOperationException("No storage driver is initialized!");
-        storageDriver.putObject(storageConfig.getCredentials().getBucket(), key, inputstream, "image/png");
+        if (this.storageDriver == null) {
+            throw new UnsupportedOperationException("No storage driver is initialized!");
+        }
+        storageDriver
+            .putObject(storageConfig.getCredentials().getBucket(), key, inputstream, "image/png");
     }
 
     public String sluggerizeUrl(String input) {

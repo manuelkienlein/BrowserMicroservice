@@ -26,7 +26,9 @@ public class StatusController {
                 context.result(formatService.toPrettyJson(status));
                 return;
             } catch (JsonProcessingException e) {
-                logger.warn("Failed pretty print status json. Returning default status json instead.", e);
+                logger
+                    .warn("Failed pretty print status json. Returning default status json instead.",
+                        e);
             }
         }
 

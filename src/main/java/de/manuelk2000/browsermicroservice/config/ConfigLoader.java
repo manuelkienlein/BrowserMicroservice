@@ -3,14 +3,13 @@ package de.manuelk2000.browsermicroservice.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
-import org.apache.commons.text.StringSubstitutor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
+import org.apache.commons.text.StringSubstitutor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ConfigLoader {
 
@@ -41,7 +40,6 @@ public class ConfigLoader {
                 logger.error("Failed create configuration file!", e);
             }
         }
-
     }
 
     public static ConfigLoader getInstance() {
@@ -57,9 +55,7 @@ public class ConfigLoader {
         // If config file not found use internal config from resources
         if (!CONFIG_FILE.exists()) {
             try {
-                URL configURL = getClass()
-                        .getClassLoader()
-                        .getResource("config.yml");
+                URL configURL = getClass().getClassLoader().getResource("config.yml");
 
                 config = objectMapper.readValue(configURL, Config.class);
             } catch (IOException e) {
@@ -90,12 +86,13 @@ public class ConfigLoader {
     }
 
     public Config getConfig() {
-        if (this.config == null) throw new IllegalStateException("Config file not loaded!");
+        if (this.config == null) {
+            throw new IllegalStateException("Config file not loaded!");
+        }
         return config;
     }
 
     public void setConfig(Config config) {
         this.config = config;
     }
-
 }

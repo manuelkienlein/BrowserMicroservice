@@ -25,12 +25,16 @@ public class Browser {
     }
 
     public void open() {
-        if (open) throw new IllegalStateException("Browser is already open!");
+        if (open) {
+            throw new IllegalStateException("Browser is already open!");
+        }
         logger.info("Open browser");
 
         // Configure driver options
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless", "--disable-gpu", "--window-size=" + windowSize.getWidth() + "," + windowSize.getHeight(), "--ignore-certificate-errors", "--hide-scrollbars");
+        options.addArguments("--headless", "--disable-gpu",
+            "--window-size=" + windowSize.getWidth() + "," + windowSize.getHeight(),
+            "--ignore-certificate-errors", "--hide-scrollbars");
         //options.addArguments("user-agent=YOUR_USER_AGENT");
 
         // Start driver
@@ -39,7 +43,9 @@ public class Browser {
     }
 
     public void close() {
-        if (!open) throw new IllegalStateException("Browser is already closed!");
+        if (!open) {
+            throw new IllegalStateException("Browser is already closed!");
+        }
         logger.info("Close browser");
 
         // Stop driver
@@ -64,8 +70,9 @@ public class Browser {
     public void setWindowSize(Dimension windowSize) {
         logger.debug("Change window size to " + windowSize.toString());
         this.windowSize = windowSize;
-        if (open)
+        if (open) {
             webDriver.manage().window().setSize(windowSize);
+        }
     }
 
     public WebDriver getWebDriver() {

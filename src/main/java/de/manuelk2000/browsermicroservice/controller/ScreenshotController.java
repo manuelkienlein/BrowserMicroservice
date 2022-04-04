@@ -14,23 +14,23 @@ public class ScreenshotController {
 
         // Screenshot dimension parameters
         int width = context.queryParamAsClass("width", Integer.class)
-                .check(w -> w > 0 && w <= 10000, "Width must be between 1 and 10000 pixels!")
-                .getOrDefault(config.getScreenshots().getDefaultWidth());
+            .check(w -> w > 0 && w <= 10000, "Width must be between 1 and 10000 pixels!")
+            .getOrDefault(config.getScreenshots().getDefaultWidth());
         int height = context.queryParamAsClass("height", Integer.class)
-                .check(h -> h > 0 && h <= 10000, "Height must be between 1 and 10000 pixels!")
-                .getOrDefault(config.getScreenshots().getDefaultHeight());
+            .check(h -> h > 0 && h <= 10000, "Height must be between 1 and 10000 pixels!")
+            .getOrDefault(config.getScreenshots().getDefaultHeight());
         websiteScreenshotService.setScreenSize(width, height);
 
         // Validate url parameter
         context.pathParamAsClass("url", String.class)
-                .check(urlParam -> {
-                    try {
-                        new URL(urlParam);
-                        return true;
-                    } catch (MalformedURLException e) {
-                        return false;
-                    }
-                }, "URL is not valid").get();
+            .check(urlParam -> {
+                try {
+                    new URL(urlParam);
+                    return true;
+                } catch (MalformedURLException e) {
+                    return false;
+                }
+            }, "URL is not valid").get();
 
         // Get url from parameter
         URL url = new URL(context.pathParam("url"));
