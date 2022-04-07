@@ -1,4 +1,4 @@
-package de.manuelk2000.browsermicroservice.service.storage;
+package net.ulinky.browsermicroservice.service.storage;
 
 import software.amazon.awssdk.services.s3.model.S3Object;
 

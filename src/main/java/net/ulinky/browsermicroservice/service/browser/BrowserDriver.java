@@ -1,4 +1,4 @@
-package de.manuelk2000.browsermicroservice.service.browser;
+package net.ulinky.browsermicroservice.service.browser;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.slf4j.Logger;

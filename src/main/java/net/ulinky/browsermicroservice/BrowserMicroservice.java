@@ -1,13 +1,14 @@
-package de.manuelk2000.browsermicroservice;
+package net.ulinky.browsermicroservice;
 
-import de.manuelk2000.browsermicroservice.config.Config;
-import de.manuelk2000.browsermicroservice.config.ConfigLoader;
-import de.manuelk2000.browsermicroservice.controller.ScreenshotController;
-import de.manuelk2000.browsermicroservice.controller.StatusController;
-import de.manuelk2000.browsermicroservice.service.format.FormatService;
-import de.manuelk2000.browsermicroservice.service.screenshot.WebsiteScreenshotService;
-import de.manuelk2000.browsermicroservice.service.storage.StorageService;
+import net.ulinky.browsermicroservice.config.Config;
+import net.ulinky.browsermicroservice.config.ConfigLoader;
+import net.ulinky.browsermicroservice.controller.ScreenshotController;
+import net.ulinky.browsermicroservice.controller.StatusController;
+import net.ulinky.browsermicroservice.service.format.FormatService;
+import net.ulinky.browsermicroservice.service.screenshot.WebsiteScreenshotService;
+import net.ulinky.browsermicroservice.service.storage.StorageService;
 import io.javalin.Javalin;
+import io.javalin.apibuilder.ApiBuilder;
 import io.javalin.core.validation.JavalinValidation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,6 @@ import org.slf4j.LoggerFactory;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static io.javalin.apibuilder.ApiBuilder.get;
 import static io.javalin.apibuilder.ApiBuilder.path;
 
 public class BrowserMicroservice {
@@ -99,9 +99,9 @@ public class BrowserMicroservice {
         app.get("/", ctx -> ctx.result("BrowserMicroservice"));
 
         app.routes(() -> {
-            get("/status", StatusController::status);
+            ApiBuilder.get("/status", StatusController::status);
             path("/v{version}", () -> {
-                get("/screenshot/{url}", ScreenshotController::screenshot);
+                ApiBuilder.get("/screenshot/{url}", ScreenshotController::screenshot);
             });
         });
     }

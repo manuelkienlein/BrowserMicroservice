@@ -1,4 +1,4 @@
-package de.manuelk2000.browsermicroservice.config;
+package net.ulinky.browsermicroservice.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;

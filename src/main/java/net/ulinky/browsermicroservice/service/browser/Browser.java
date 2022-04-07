@@ -1,4 +1,4 @@
-package de.manuelk2000.browsermicroservice.service.browser;
+package net.ulinky.browsermicroservice.service.browser;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;

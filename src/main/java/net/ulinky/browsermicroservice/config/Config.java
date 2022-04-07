@@ -1,4 +1,4 @@
-package de.manuelk2000.browsermicroservice.config;
+package net.ulinky.browsermicroservice.config;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;

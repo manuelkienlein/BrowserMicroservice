@@ -1,4 +1,4 @@
-package de.manuelk2000.browsermicroservice.service.format;
+package net.ulinky.browsermicroservice.service.format;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

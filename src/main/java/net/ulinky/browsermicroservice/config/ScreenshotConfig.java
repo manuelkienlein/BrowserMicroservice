@@ -1,6 +1,6 @@
-package de.manuelk2000.browsermicroservice.config;
+package net.ulinky.browsermicroservice.config;
 
-import de.manuelk2000.browsermicroservice.service.browser.BrowserDriver;
+import net.ulinky.browsermicroservice.service.browser.BrowserDriver;
 
 public class ScreenshotConfig {
 

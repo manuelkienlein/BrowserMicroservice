@@ -1,12 +1,12 @@
-package de.manuelk2000.browsermicroservice.controller;
+package net.ulinky.browsermicroservice.controller;
 
 import io.javalin.http.Context;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static de.manuelk2000.browsermicroservice.BrowserMicroservice.config;
-import static de.manuelk2000.browsermicroservice.BrowserMicroservice.websiteScreenshotService;
+import static net.ulinky.browsermicroservice.BrowserMicroservice.config;
+import static net.ulinky.browsermicroservice.BrowserMicroservice.websiteScreenshotService;
 
 public class ScreenshotController {
 

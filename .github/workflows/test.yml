@@ -11,16 +11,6 @@ on:
       - develop
 
 jobs:
-  codestyle:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v2
-      - name: Check code style
-        uses: axel-op/googlejavaformat-action@v3
-        with:
-          args: "--set-exit-if-changed --dry-run --aosp"
-
   tests:
     runs-on: ubuntu-latest
     steps:

@@ -1,4 +1,4 @@
-package de.manuelk2000.browsermicroservice.service.storage;
+package net.ulinky.browsermicroservice.service.storage;
 
 public class ObjectStorageCredentials {
 

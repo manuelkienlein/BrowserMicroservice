@@ -1,4 +1,4 @@
-package de.manuelk2000.browsermicroservice.controller;
+package net.ulinky.browsermicroservice.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.javalin.http.Context;
@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-import static de.manuelk2000.browsermicroservice.BrowserMicroservice.config;
-import static de.manuelk2000.browsermicroservice.BrowserMicroservice.formatService;
+import static net.ulinky.browsermicroservice.BrowserMicroservice.config;
+import static net.ulinky.browsermicroservice.BrowserMicroservice.formatService;
 
 public class StatusController {
 

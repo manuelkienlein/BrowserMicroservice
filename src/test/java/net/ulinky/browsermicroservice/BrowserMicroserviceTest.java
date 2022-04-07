@@ -1,4 +1,4 @@
-package de.manuelk2000.browsermicroservice;
+package net.ulinky.browsermicroservice;
 
 import org.junit.jupiter.api.Test;
 

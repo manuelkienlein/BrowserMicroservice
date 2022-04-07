@@ -1,6 +1,6 @@
-package de.manuelk2000.browsermicroservice.service.storage;
+package net.ulinky.browsermicroservice.service.storage;
 
-import de.manuelk2000.browsermicroservice.config.StorageConfig;
+import net.ulinky.browsermicroservice.config.StorageConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

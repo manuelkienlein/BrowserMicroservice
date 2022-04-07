@@ -1,8 +1,8 @@
-package de.manuelk2000.browsermicroservice.service.screenshot;
+package net.ulinky.browsermicroservice.service.screenshot;
 
-import de.manuelk2000.browsermicroservice.BrowserMicroservice;
-import de.manuelk2000.browsermicroservice.service.browser.Browser;
-import de.manuelk2000.browsermicroservice.service.browser.BrowserDriver;
+import net.ulinky.browsermicroservice.BrowserMicroservice;
+import net.ulinky.browsermicroservice.service.browser.Browser;
+import net.ulinky.browsermicroservice.service.browser.BrowserDriver;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
