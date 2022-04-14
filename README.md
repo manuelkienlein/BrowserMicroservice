@@ -17,6 +17,7 @@ This browser microservice can be used to make the functionalities of a web brows
 
 It offers the following **features**:
 - Taking high quality screenshots of websites
+- Save screenshots to object storage
 
 ## Documentation
 
@@ -35,42 +36,30 @@ screenshots:
   defaultBrowserEngine: "CHROME"
 ```
 
-And here is a example of a configuration with all possible settings:
-
-```yml
-host: "127.0.0.1"
-port: 7000
-screenshots:
-  defaultWidth: 1920
-  defaultHeight: 1200
-  defaultBrowserEngine: "CHROME"
-storage:
-  credentials:
-    bucket: "bms-screenshots"
-    region: "eu-central"
-    accessKey: "key"
-    secretKey: "secret"
-    host: "localhost"
-    port: 9000
-    useSsl: false
-```
-
-If you want to use environment variables, you can include them by adding ```${env:PORT}```. Here is a full documentation about [config variables](https://commons.apache.org/proper/commons-text/apidocs/org/apache/commons/text/StringSubstitutor.html) using interpolation.
+For more information about all configuration options visit the [Configuration Documentation](docs/Configuration.md)
 
 ### API Interface
 
 - #### Take screenshot
   **GET** ```localhost:7000/v1/screenshot/{url-encoded website url}```
   
-  This request takes a simple screenshot of the given website and returns the image in the repsone.
+  This request takes a simple screenshot of the given website and returns the image in the response.
 
   | Get parameter | Description              | Value     |
   |---------------|--------------------------|-----------|
   | width         | Width of the screenshot  | 1 - 10000 |
   | height        | Height of the screenshot | 1 - 10000 |
 
+  For more information about all api endpoints visit the [Screenshot-API Documentation](docs/Screenshot-API.md).
+
+- #### Status
+  **GET** ```localhost:7000/status```
+
+  This HTTP endpoint provides status information and metrics about the microservce.
+  
+  For more information about the status api visit the [Status-API Documentation](docs/Status-API.md).
+
 ## Links
 - https://javalin.io/documentation
 - https://www.selenium.dev/documentation/
 - https://bonigarcia.dev/webdrivermanager/
-- https://commons.apache.org/proper/commons-text/apidocs/org/apache/commons/text/StringSubstitutor.html
