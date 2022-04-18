@@ -1,0 +1,6 @@
+host: "127.0.0.1"
+port: 7000
+screenshots:
+  defaultWidth: 1920
+  defaultHeight: 1200
+  defaultBrowserEngine: "CHROME"
