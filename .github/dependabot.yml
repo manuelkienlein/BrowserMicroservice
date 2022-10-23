@@ -5,7 +5,7 @@ updates:
     schedule:
       interval: "monthly"
     reviewers:
-      - "ManuelK2000"
+      - "manuelkienlein"
     open-pull-requests-limit: 5
 
   - package-ecosystem: "github-actions"
@@ -13,5 +13,5 @@ updates:
     schedule:
       interval: "monthly"
     reviewers:
-      - "ManuelK2000"
+      - "manuelkienlein"
     open-pull-requests-limit: 2
